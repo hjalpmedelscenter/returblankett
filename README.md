@@ -1,3 +1,1 @@
-# returblankett
-
-DHC's returblankett under utveckling
+ [Returblankett till DHC](https://hjalpmedelscenter.github.io/returblankett/)
