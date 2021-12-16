@@ -48,6 +48,7 @@ h1, h2 {
 }
 
 h1 {
+	float: right;
 	font-size: 2rem;
 	font-weight: bold;
 	margin: 0 0 0 250px;
@@ -200,7 +201,7 @@ label.radio {
  * -------------------------------------------------- */
 p.datum {
 	display: block;
-	margin: 0 0 0 250px;
+	float: right;
 }
 
 p.info {
