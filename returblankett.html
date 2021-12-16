@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Reklamation, reparation och återköp</title>
+	<link rel="stylesheet" href="layout.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,300;0,700;1,300;1,700&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+
+<header>
+	<img id="logo" src="dhc.png">
+	<h1>Reklamation, reparation och återköp</h1>
+	<p class="datum">Utskriftsdatum: <span id="date"></span></p>
+</header>
+
+<p><em>För att returförsändelsen ska behandlas ska blanketten vara korrekt ifylld, <strong>skrivas ut och skickas med hjälpmedlet</strong>. Sätt fast blanketten ordentligt.</em></p>
+
+<!-- KONTAKTUPPGIFTER -->
+
+<div id="div_kontaktuppgifter" style="display: none;">
+	<form id="form_kontaktuppgifter" autocomplete="off">
+	<h2 id="h2_kontaktuppgifter">Kontaktuppgifter</h2>
+	<label for="knr">Kundnummer:</label><br>
+	<input type="number" min="1000" max="9999" name="knr" id="knr" value="1234" required><br>
+	<label for="kontp">Kontaktperson:</label><br>
+	<input type="text" name="kontp" id="kontp" value="Kalle Karlsson" required><br>
+	<label for="epost">E-post kontaktperson:</label><br>
+	<input type="email" name="epost" id="epost" value="kalle.karlsson@borlange.se" required><br>	
+	<label for="tel">Telefon kontaktperson:</label><br>
+	<input type="tel" name="tel" id="tel" value="0243-123456" required></span><br>
+	<div class="right"><input type="submit" id="button_kontaktuppgifter" class="btn" value="Fortsätt &#9654;"></div>
+	</form><!-- end #form_kontaktuppgifter -->
+</div><!-- end #div_kontaktuppgifter -->
+
+<!-- RETURORSAK -->
+
+<div id="div_returorsak" style="display: none;">
+	<form id="form_returorsak" autocomplete="off">
+	<h2 id="h2_returorsak">Välj returorsak</h2>
+	<input type="radio" id="returorsak_rek" name="returorsak" value="reklamation" required><label class="radio" for="returorsak_rek">Reklamation<br><small><em>Reklamationsrätten gäller material-/tillverkningsfel, felleverans samt transportskada.</em></small></label><br>
+	<input type="radio" id="returorsak_rep" name="returorsak" value="reparation" required><label class="radio" for="returorsak_rep">Reparation</label><br>
+	<input type="radio" id="returorsak_atk" name="returorsak" value="aterkop" required><label class="radio" for="returorsak_atk">Återköp</label><br>
+	<div class="right"><input type="submit" id="button_returorsak" class="btn" value="Fortsätt &#9654;"></div>
+	</form><!-- end #form_returorsak -->
+</div><!-- end #div_returorsak -->
+
+	<!-- VÄLJ REKLAMATIONSORSAK -->
+
+	<div id="div_reklamationsorsak" style="display: none;">
+		<form id="form_reklamationsorsak" autocomplete="off">
+		<h2 id="h2_reklamationsorsak">Orsak till reklamation</h2>
+		<label class="radio"><input type="radio" id="radio_tillverkningsfel" name="rek_orsak" value="rek_tillverkningsfel">Material-/tillverkningsfel</label><br>
+		<label class="radio"><input type="radio" id="radio_felleverans" name="rek_orsak" value="rek_felleverans">Felleverans</label><br>
+		<label class="radio"><input type="radio" id="radio_transportskada" name="rek_orsak" value="rek_transportskada">Transportskada</label><br>
+		<div class="right"><input type="submit" id="button_rek_orsak" class="btn" value="Fortsätt &#9654;"></div>
+		</form><!-- end #form_reklamationsorsak -->
+	</div><!-- end #div_reklamationsorsak -->
+
+		<!-- REKLAMATION MATERIAL-/TILLVERKNINGSFEL -->
+
+		<div id="div_rek_tillverkningsfel" style="display: none;">
+			<form id="form_rek_tillverkningsfel" autocomplete="off">
+			<h2 id="h2_rek_tillverkningsfel">Reklamation - Material-/tillverkningsfel</h2>
+			<p><em>Reklamationsrätten gäller inte om felet uppkommit pga förslitning, försummad eller felaktig skötsel, genom annan användning än vad som avsetts eller pga olämpliga åtgärder eller ingrepp.</em><p>
+			<label for="mtfel">Beskriv felet här:</label><br>
+			<textarea name="mtfel" id="mtfel" cols="45" rows="5" wrap="virtual"></textarea>
+			<input type="radio" name="ersattning" id="nytt" value="nytt" /><label for="nytt">Nytt hjälpmedel</label><br>
+			<input type="radio" name="ersattning" id="betalning" value="betalning" /><label for="betalning">Återbetalning</label>
+			</form><!-- end #form_rek_tillverkningsfel -->
+		</div><!-- end #div_rek_tillverkningsfel -->
+
+		<!-- REKLAMATION FELLEVERANS -->
+
+		<div id="div_rek_fellev" style="display: none;">
+			<h2 id="h2_rek_felleverans">Reklamation - Felleverans</h2>
+			<label for="fellev">Vilket hjälpmedel beställdes?</label><br>
+			<textarea name="fellev" id="fellev" cols="45" rows="1" wrap="virtual"></textarea>
+			<label for="vilket">Vilket hjälpmedel levererades?</label><br>
+			<textarea name="vilket" id="vilket" cols="45" rows="1" wrap="virtual"></textarea>
+			<input type="radio" name="ersattning" id="nytt" value="nytt" /><label for="nytt">Nytt hjälpmedel</label><br>
+			<input type="radio" name="ersattning" id="betalning" value="betalning" /><label for="betalning">Återbetalning</label>
+		</div><!-- end #div_rek_fellev -->
+
+		<!-- REKLAMATION TRANSPORTSKADA -->
+	
+		<div id="div_rek_transportskada" style="display: none;">
+			<h2 id="h2_rek_felleverans">Reklamation - Transportskada</h2>
+			<p><em>Synliga skador ska reklameras samma dag, osynliga inom 7 dagar.</em><p>
+			<label for="skada">Beskriv skadan:</label><br>
+			<textarea name="skada" id="skada" cols="45" rows="5" wrap="virtual"></textarea>
+			<input type="radio" name="ersattning" id="nytt" value="nytt" /><label for="nytt">Nytt hjälpmedel</label><br>
+			<input type="radio" name="ersattning" id="betalning" value="betalning" /><label for="betalning">Återbetalning</label>
+		</div><!-- end reklamation_transportskada -->
+
+
+<div id="sektion_reparation" style="display: none;">
+	<h2 id="h2_reparation">Reparation</h2>
+	<p><em> Endast hyrselsortiment repareras. Retursortiment repareras ej om inte annat överenskommits med tekniker.</em><p>
+
+	<label for="rep">Beskriv vad som ska repareras:</label><br>
+	<textarea name="rep" id="rep" cols="45" rows="5" wrap="virtual"></textarea><br>
+
+	<label for="tekn">Ev vidtalad tekniker:</label><br>
+	<textarea name="tekn" id="tekn" cols="45" rows="1" wrap="virtual"></textarea>
+
+	<h2>Leveransadress efter reparation:</h2>
+
+	<label for="namn">Namn:</label><input type="text" name="namn" id="namn" />
+	<label for="adress">Adress:</label><input type="text" name="adress" id="adress" />
+	<label for="postnr">Postadress:</label><input type="text" name="postnr" id="postnr" />
+</div><!-- end #sektion_reparation -->
+
+<div id="sektion_aterkop" style="display: none;">
+	<fieldset>
+		<legend>ÅTERKÖP FÖRSÄLJNINGSSORTIMENT</legend>
+		<p><em>Följande villkor ska vara uppfyllda för att återköp ska göras:</em></p>
+		<ul type="circle">
+			<li>Endast <strong>lagerlagda</strong> varor återköps; beställningsvaror återköps inte</li>
+			<li>Endast kund med samverkasavtal</li>
+			<li>Endast hjälpmedel i fullgott skick och i originalförpackning</li>
+			<li>Returen ska vara DHC tillhanda senast 30 dagar efter mottagandet</li>
+		</ul>
+
+		<label for="aterkop1">Ange artikelnummer/benämning:</label><input type="text" name="aterkop1" id="aterkop1" />
+		<label for="aterkop2">Ange artikelnummer/benämning:</label><input type="text" name="aterkop2" id="aterkop2" />
+		<label for="aterkop3">Ange artikelnummer/benämning:</label><input type="text" name="aterkop3" id="aterkop3" />
+	</fieldset>
+</div><!-- end #sektion_aterkop -->
+
+<div id="div_utskrift" style="display: none;">
+	<form id="form_utskrift">
+	<input class="btn" type="reset" name="reset" id="button_reset" value="Rensa allt och börja om"/>
+	<input class="btn" style="display: none;" type="submit" id="button_print" value="Skriv ut">
+	</form><!-- end #form_utskrift -->
+</div><!-- end sektion_skriv_rensa -->
+
+<!--
+<footer></footer>
+-->
+
+</body>
+</html>
+
+                                    
